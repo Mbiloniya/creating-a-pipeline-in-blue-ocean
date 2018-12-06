@@ -8,11 +8,16 @@ pipeline {
   }
   stages {
     stage('build') {
-      environment {
-        CI = 'true'
-      }
       steps {
         sh 'npm install'
+      }
+    }
+    stage('test') {
+      environment {
+        CI = 'True'
+      }
+      steps {
+        sh './jenkins/scripts/test.sh'
       }
     }
   }
